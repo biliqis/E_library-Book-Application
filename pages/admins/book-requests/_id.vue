@@ -108,32 +108,31 @@
 <script>
 import { mapActions, mapGetters } from "vuex"
 export default {
-  components: {},
-  middleware: ['auth', 'isAdmin'],
-  data(){
-      return {
-          dialog: false,
-        loading: false,
-        search: null,
-        bookTitle: 'Purpose driven life',
-        checkbox: false,
-        approvals: null
-      }
-  },
-  computed: {
-      ...mapGetters({
-          'singleBook': 'transactions/singleBook'
-      })
-  },
-  methods: {
-      ...mapActions({
-            'getSingleBook': 'transactions/getSingleBook',
-            'approveRequests': 'administration/approveRequests',
-      }),
-      clickToApprove(val){
-                console.log(val)
-                this.approvals = val
-            },
+    middleware: ['auth', 'isAdmin'],
+    data(){
+        return {
+            dialog: false,
+            loading: false,
+            search: null,
+            bookTitle: 'Purpose driven life',
+            checkbox: false,
+            approvals: null
+        }
+    },
+    computed: {
+        ...mapGetters({
+            'singleBook': 'transactions/singleBook'
+        })
+    },
+     methods: {
+        ...mapActions({
+                'getSingleBook': 'transactions/getSingleBook',
+                'approveRequests': 'administration/approveRequests',
+        }),
+        clickToApprove(val){
+            console.log(val)
+            this.approvals = val
+        },
 
         async approveReq(){
             if(!this.approvals){
@@ -149,24 +148,26 @@ export default {
             
         },
         async confirmApproval(){
-            console.log("hghghh")
-                try{
-                    const data = {
-                        requestId: this.approvals
-                    }
-                    await this.approveRequests(this.$route.params.id)
-                    this.dialog = true;
-                    this.$notify({
-                        group: 'auth',
-                        text: 'Book has been approved',
-                        duration: 2000,
-                    });
-                } catch(err){}}
-  },
-  mounted(){
-      this.bookRequestsId = this.$route.params.id
-      this.getSingleBook(this.bookRequestsId)
-  }
+            try{
+                const data = {
+                    requestId: this.approvals
+                }
+                await this.approveRequests(this.approvals)
+                this.dialog = true;
+                this.$notify({
+                    group: 'auth',
+                    text: 'Book has been approved',
+                    duration: 2000,
+                });
+            } catch(err){
+
+            }
+        }
+    },
+    mounted(){
+        this.bookRequestsId = this.$route.params.id
+        this.getSingleBook(this.bookRequestsId)
+    }
 }
 </script>
 <style scoped>
