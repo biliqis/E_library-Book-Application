@@ -55,7 +55,7 @@ export default {
  
 
    axios: {
-    baseURL: " https://apis-elibrary.herokuapp.com/"  // here set your API url
+    baseURL: " http://localhost:8080/"  // here set your API url
   },
 
 
