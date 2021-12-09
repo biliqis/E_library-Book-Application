@@ -63,6 +63,18 @@
                 </v-col>
             </v-row>
         </v-card>
+        
+
+        <v-snackbar v-model="snackbar" :timeout="timeout">
+      {{ response }}
+      <template v-slot:action="{ attrs }">
+        <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
+
+
   </v-app>
 </template>
 
@@ -76,6 +88,10 @@ export default {
     dialog: true,
     valid: false,
     show1: false,
+      timeout: 2000,
+    response: "",
+    snackbar: false,
+
     login: {
       usernameEmail: null,
       password: null,
@@ -99,8 +115,10 @@ export default {
                 this.$router.push("/admins/dashboard/")
             }
             this.$router.push("/dashboard/")
-        } catch(e){
-            // console.log(e)
+         } catch(e){
+            this.response = e.response.data.message;
+        this.snackbar = true;
+        
         }
       }
     },

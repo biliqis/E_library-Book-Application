@@ -18,6 +18,7 @@
                                     block
                                     :required="true"
                                     class="ma-0 p-0 "
+                                     :rules="[rules.required]"
                                     />
                                 </div>
                                 <div>
@@ -30,6 +31,7 @@
                                     block
                                     :required="true"
                                     class="ma-0 p-0 "
+                                     :rules="[rules.required]"
                                     />
                                 </div>
                                 <div>
@@ -42,6 +44,7 @@
                                     block
                                     :required="true"
                                     class="ma-0 p-0 "
+                                     :rules="[rules.required]"
                                     />
                                 </div>
                                 <div>
@@ -54,6 +57,7 @@
                                     block
                                     :required="true"
                                     class="ma-0 p-0 "
+                                     :rules="[rules.required, rules.email]"
                                     />
                                 </div>
                                 <div>
@@ -63,11 +67,13 @@
                                     :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
                                     :type="show1 ? 'text' : 'password'"
                                     label="Password"
+                                    hint="At least 8 characters"
                                     dense
                                     outlined
                                     block
                                     :required="true"
                                     class="ma-0 p-0 "
+                                    :rules="[rules.required, rules.password]"
                                     @click:append="show1 = !show1"
                                     />
                                 </div>
@@ -75,7 +81,9 @@
                                     <v-text-field
                                     v-model="register.confirmPassword"
                                     placeholder="Re-enter Password"
+                                     :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
                                     label="Re-enter Password"
+                                    hint ="must match password"
                                     dense
                                     type="password"
                                     outlined
@@ -96,6 +104,7 @@
                                     block
                                     :required="true"
                                     class="ma-0 p-0 "
+                                    :rules="[rules.required, rules.phone]"
                                     />
                                 </div>
                                 <div>
@@ -134,7 +143,6 @@
         </v-card>
   </v-app>
 </template>
-
 <script>
 import { mapActions, mapGetters } from "vuex"
 export default {
@@ -156,6 +164,26 @@ export default {
       address: null,
       password: null,
     },
+    rules:{
+        required:value => !!value ||'Required',
+        email: value => {
+            const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            return pattern.test(value) || 'Invalid e-mail.'            
+        },
+        phone: value => {
+            const pattern = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
+            return pattern.test(value) || 'Invalid phone number.'            
+        },
+        password: value => {
+            const pattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
+            return pattern.test(value) || 'must contain at least one upper case, one lower case, one character'            
+        },
+        matchpassword: value => {
+            value === this.register.password || "password doesn't match"
+        }
+
+
+    },      
   }),
   computed: {
     ...mapGetters({
@@ -181,19 +209,21 @@ export default {
                 role: 'user'
             }
             await this.userRegister(data);
-           let response = await this.$auth.loginWith("local", {
+           await this.$auth.loginWith("local", {
                 data: {
                     email: this.login.usernameEmail,
                     username: this.login.usernameEmail,
                     password: this.login.password
                 }
             });
+            return this.$router.push("/admins/dashboard/")
         } catch(e){
 
         }  
       }
     },
 }
+
 </script>
 <style scoped>
 .half-bg {
