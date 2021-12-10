@@ -216,7 +216,8 @@ export default {
                     password: this.login.password
                 }
             });
-            return this.$router.push("/admins/dashboard/")
+            // this.$router.push("/login")
+              return this.$router.push("/admins/dashboard/")
         } catch(e){
 
         }  
