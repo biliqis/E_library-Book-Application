@@ -2,7 +2,7 @@
     <main>
         <v-item-group active-class="primary">
             <v-container>
-                <div class="text-h6 text-left font-weight-medium grey--text mb-10 text-capitalize">{{bookTitle}}<span></div>
+                <div class="text-h6 text-left font-weight-medium grey--text mb-10 text-capitalize">{{bookTitle}}</div>
                 <v-row>
                     <v-col  cols="12" md="6">
                         <v-row>
