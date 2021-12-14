@@ -18,7 +18,6 @@
                                     block
                                     :required="true"
                                     class="ma-0 p-0 "
-                                     :rules="[rules.required]"
                                     />
                                 </div>
                                 <div>
@@ -31,7 +30,6 @@
                                     block
                                     :required="true"
                                     class="ma-0 p-0 "
-                                     :rules="[rules.required]"
                                     />
                                 </div>
                                 <div>
@@ -44,7 +42,6 @@
                                     block
                                     :required="true"
                                     class="ma-0 p-0 "
-                                     :rules="[rules.required]"
                                     />
                                 </div>
                                 <div>
@@ -57,35 +54,31 @@
                                     block
                                     :required="true"
                                     class="ma-0 p-0 "
-                                     :rules="[rules.required, rules.email]"
                                     />
                                 </div>
                                 <div>
-                                    <v-text-field
+                                
+                                <v-text-field
                                     v-model="register.password"
                                     placeholder="Password"
                                     :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
                                     :type="show1 ? 'text' : 'password'"
-                                    label="Password"
-                                    hint="At least 8 characters"
+                                    @click:append="show1 = !show1"
+                                    label="Password,(A-Z, a-z, @!~$%)"
                                     dense
                                     outlined
                                     block
                                     :required="true"
-                                    class="ma-0 p-0 "
-                                    :rules="[rules.required, rules.password]"
-                                    @click:append="show1 = !show1"
+                                    class="ma-0 p-0 mb-3"
                                     />
                                 </div>
                                 <div>
                                     <v-text-field
                                     v-model="register.confirmPassword"
                                     placeholder="Re-enter Password"
-                                     :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                                    label="Re-enter Password"
-                                    hint ="must match password"
-                                    dense
                                     type="password"
+                                    label="Re-enter Password"
+                                    dense
                                     outlined
                                     block
                                     :required="true"
@@ -104,7 +97,6 @@
                                     block
                                     :required="true"
                                     class="ma-0 p-0 "
-                                    :rules="[rules.required, rules.phone]"
                                     />
                                 </div>
                                 <div>
@@ -143,8 +135,9 @@
         </v-card>
   </v-app>
 </template>
+
 <script>
-import { mapActions, mapGetters } from "vuex"
+import { mapActions, mapGetters, mapMutations } from "vuex"
 export default {
   components: {},
   layout: "guest",
@@ -164,26 +157,6 @@ export default {
       address: null,
       password: null,
     },
-    rules:{
-        required:value => !!value ||'Required',
-        email: value => {
-            const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-            return pattern.test(value) || 'Invalid e-mail.'            
-        },
-        phone: value => {
-            const pattern = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
-            return pattern.test(value) || 'Invalid phone number.'            
-        },
-        password: value => {
-            const pattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
-            return pattern.test(value) || 'must contain at least one upper case, one lower case, one character'            
-        },
-        matchpassword: value => {
-            value === this.register.password || "password doesn't match"
-        }
-
-
-    },      
   }),
   computed: {
     ...mapGetters({
@@ -191,6 +164,9 @@ export default {
     })
   },
   methods: {
+      ...mapMutations({
+            'SET_VALIDATION_ERRORS' : 'validation/SET_VALIDATION_ERRORS'
+        }),
     ...mapActions({
         'userRegister': 'userRegister'
     }),
@@ -209,22 +185,19 @@ export default {
                 role: 'admin'
             }
             await this.userRegister(data);
-           await this.$auth.loginWith("local", {
-                data: {
-                    email: this.login.usernameEmail,
-                    username: this.login.usernameEmail,
-                    password: this.login.password
-                }
-            });
-            // this.$router.push("/login")
-              return this.$router.push("/admins/dashboard/")
+                 this.$notify({
+                    group: 'auth',
+                    text: `Registration successful`,
+                    duration: 1500,
+                })
+                this.$router.push("/login")
+            
         } catch(e){
-
+            console.log(e)
         }  
       }
     },
 }
-
 </script>
 <style scoped>
 .half-bg {

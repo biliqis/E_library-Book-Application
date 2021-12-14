@@ -277,6 +277,7 @@
         <nuxt/>
         <notifications  position="top center" group="all"/>
         <notifications  position="bottom center" group="auth"/>
+          <notifications  position="bottom center" group="auth"/>
       </v-container>
     </v-main>
   </v-app>

@@ -2,13 +2,13 @@
     <main>
         <v-item-group active-class="primary">
             <v-container>
-                <div class="text-h6 text-left font-weight-medium grey--text mb-10 text-capitalize">{{bookTitle}}</span></div>
+                <div class="text-h6 text-left font-weight-medium grey--text mb-10 text-capitalize">{{bookTitle}}<span></div>
                 <v-row>
                     <v-col  cols="12" md="6">
                         <v-row>
                             <v-col cols="12" md="4">
                                 <div class="fill-height d-flex justify-center flex-column align-center" >
-                                    <img src="/svg/login.svg" width="100%" alt="Login image"/>
+                                    <img :src="singleBook.bookCover" width="100%" alt="Login image"/>
                                 </div>
                             </v-col>
                             <v-col cols="12" md="8">
