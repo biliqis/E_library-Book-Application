@@ -2,13 +2,47 @@
     <main>
         <v-item-group active-class="primary">
             <v-container>
-                
+                <div>
+                    <v-row>
+                        <v-col cols="12" md="4" pa-0 class="pa-0">
+                            <div class="d-flex items-center">
+                                <v-form class="d-flex items-center">
+                                    <v-text-field
+                                        v-model="search"
+                                        placeholder="Password"
+                                        append-icon="mdi-magnify"
+                                        dense
+                                        outlined
+                                        block
+                                        height="40"
+                                        :required="true"
+                                        class="ma-0 p-0 mb-3"
+                                    />
+                                    <v-btn
+                                        class="ml-1"
+                                        depressed
+                                        height="40"
+                                        width="40"
+                                        :loading="loading"
+                                        :disabled="loading"
+                                        color="primary"
+                                        @click="searchResult"
+                                        >
+                                        <v-icon>
+                                            mdi-filter
+                                        </v-icon>
+                                    </v-btn>
+                                </v-form>
+                            </div>
+                        </v-col>
+                    </v-row>
+                </div>
                 <v-row>
                     <v-col  cols="12" >
-                        <div class="text-subtitle-1 text-left font-weight-normal grey--text mb-2" v-if="!books">
+                        <div class="text-subtitle-1 text-left font-weight-normal grey--text mb-2" v-if="allBooks.length < 1">
                             No book has been added yet, please check back !
                         </div>
-                        <template>
+                        <template v-else>
                             <v-simple-table>
                                 <template v-slot:default>
                                 <thead>
@@ -49,18 +83,20 @@ export default {
     components: {},
     data(){
         return {
-            books: [ 
-                {title: 'Purpose driven life', availebleCopies: 10, id: '121313311'},
-                {title: 'Purpose driven life', availebleCopies: 10, id: '121313331'},
-                {title: 'Purpose driven life', availebleCopies: 10, id: '121313371'},
-                {title: 'Purpose driven life', availebleCopies: 10, id: '121313361'},
-            ]
+            search: null,
         }
     },
     computed: {
         ...mapGetters({
             'allBooks': 'transactions/allBooks'
-        })
+        }),
+
+        searchResult(){
+            const data = {
+                book: this.search ? this.search : ""
+            }
+            this.getAllBooks(data)
+        }
     }, 
     methods: {
         ...mapActions({
@@ -68,7 +104,10 @@ export default {
         })
     },
     mounted(){
-        this.getAllBooks()
+        const data = {
+            book: this.search ? this.search : ""
+        }
+        this.getAllBooks(data)
     }
 }
 </script>

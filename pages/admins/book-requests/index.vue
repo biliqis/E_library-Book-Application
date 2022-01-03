@@ -24,7 +24,7 @@
                                     :loading="loading"
                                     :disabled="loading"
                                     color="primary"
-                                    @click="loader = 'loading'"
+                                    @click="searchResult"
                                     >
                                     <v-icon>
                                         mdi-filter
@@ -39,10 +39,10 @@
 
                 <v-row>
                     <v-col  cols="12" >
-                        <div class="text-subtitle-1 text-left font-weight-normal grey--text mb-2" v-if="!books">
+                        <div class="text-subtitle-1 text-left font-weight-normal grey--text mb-2" v-if="allBooks.length < 1">
                             No book request yet, please check back !
                         </div>
-                        <template>
+                        <template v-else>
                             <v-simple-table>
                                 <template v-slot:default>
                                 <thead>
@@ -84,28 +84,32 @@ export default {
       return {
           loading: false,
           search: null,
-          books: [ 
-              {title: 'Purpose driven life', availebleCopies: 10, id: '121313311'},
-              {title: 'Purpose driven life', availebleCopies: 10, id: '121313331'},
-              {title: 'Purpose driven life', availebleCopies: 10, id: '121313371'},
-              {title: 'Purpose driven life', availebleCopies: 10, id: '121313361'},
-          ]
       }
   },
   computed: {
       ...mapGetters({
           'allBooks': 'transactions/allBooks',
         'pendingRequests': 'administration/pendingRequests'
-      })
+      }), 
+
+      searchResult(){
+            const data = {
+                book: this.search ? this.search : ""
+            }
+            this.getAllBooks(data)
+        }
   },
   methods: {
       ...mapActions({
             'getAllBooks': 'transactions/getAllBooks',
           'getAllPendingRequests': 'administration/getAllPendingRequests'
-      })
+      }),
   },
   mounted(){
-      this.getAllBooks()
+      const data = {
+            book: this.search ? this.search : ""
+        }
+        this.getAllBooks(data)
   }
 }
 </script>

@@ -2,15 +2,15 @@ import Vue from 'vue'
 import { decode, parsePath, withoutBase, withoutTrailingSlash, normalizeURL } from 'ufo'
 
 import { getMatchedComponentsInstances, getChildrenComponentInstancesUsingFetch, promisify, globalHandleError, urlJoin, sanitizeComponent } from './utils'
-import NuxtError from '../layouts/error.vue'
+import NuxtError from '..\\layouts\\error.vue'
 import NuxtLoading from './components/nuxt-loading.vue'
 import NuxtBuildIndicator from './components/nuxt-build-indicator'
 
-import '../node_modules/vuetify/dist/vuetify.css'
+import '..\\node_modules\\vuetify\\dist\\vuetify.css'
 
-import _77068119 from '../layouts/admin.vue'
-import _6f6c098b from '../layouts/default.vue'
-import _7762aba2 from '../layouts/guest.vue'
+import _77068119 from '..\\layouts\\admin.vue'
+import _6f6c098b from '..\\layouts\\default.vue'
+import _7762aba2 from '..\\layouts\\guest.vue'
 
 const layouts = { "_admin": sanitizeComponent(_77068119),"_default": sanitizeComponent(_6f6c098b),"_guest": sanitizeComponent(_7762aba2) }
 

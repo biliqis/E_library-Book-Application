@@ -70,7 +70,9 @@ export default {
     mounted(){
         this.getAllUsers()
         this.getAllBooks()
-        
+        if(this.user && this.user.role === "user"){
+            this.$router.push("/dashboard")
+        }
     }
 
 }

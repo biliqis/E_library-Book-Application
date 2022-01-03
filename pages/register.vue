@@ -172,7 +172,7 @@ export default {
     }),
     async signIn() {
         try{
-            const data = {
+            const data1 = {
                 firstName: this.register.firstName,
                 lastName: this.register.lastName,
                 username: this.register.username,
@@ -184,13 +184,17 @@ export default {
                 address: this.register.address,
                 role: 'user'
             }
-            await this.userRegister(data);
-                 this.$notify({
-                    group: 'auth',
-                    text: `Registration successful`,
-                    duration: 1500,
-                })
-                this.$router.push("/login")
+            await this.userRegister(data1);
+            this.show = true
+            await this.$auth.loginWith("local", {
+                data: {
+                    email: data1.email,
+                    password: data1.password
+                }
+            });
+                
+            this.show = false
+            this.$router.push("dashboard")
             
         } catch(e){
             console.log(e)

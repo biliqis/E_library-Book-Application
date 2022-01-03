@@ -86,16 +86,16 @@ export const actions = {
     commit("SET_LOADING", false)
   },
 
-  async getAllPendingRequests({ commit },) {
+  async getAllPendingRequests({ commit }, bookId) {
     commit("SET_LOADING", true);
-    const { data }  = await this.$axios.$get("/api/v1/admin-approval/get-all-pending-requests")
-    commit('SET_PENDING_REQUESTS', data)
+    const { message }  = await this.$axios.$get("/api/v1/books-borrowing/pending-books/" + bookId )
+    commit('SET_PENDING_REQUESTS', message)
     commit("SET_LOADING", false)
   },
 
-  async getAllApprovedRequests({ commit },) {
+  async getAllApprovedRequests({ commit }, bookId) {
     commit("SET_LOADING", true);
-    const { data }  = await this.$axios.$get("/admin/get-all-approved-requests")
+    const { data }  = await this.$axios.$get("/api/v1/books-borrowing/get-approve-books/" + bookId)
     commit('SET_ALL_APPROVED_REQUESTS', data)
     commit("SET_LOADING", false)
   },

@@ -43,7 +43,7 @@
                         <div class="text-subtitle-1 text-left font-weight-normal grey--text mb-2" v-if="allBooks < 1">
                             No book request yet, please check back !
                         </div>
-                        <div else>
+                        <div v-else>
                             <template >
                                 <v-simple-table>
                                     <template v-slot:default>
@@ -102,11 +102,19 @@ export default {
             'getAllBookRequests': 'administration/getAllBookRequests',
             'getAllPendingRequests': 'administration/getAllPendingRequests',
             'getAllBooks': 'transactions/getAllBooks',
-        })
+        }),
+        searchResult(){
+            const data = {
+                book: this.search ? this.search : ""
+            }
+            this.getAllBooks(data)
+        }
     },
     mounted(){
-        this.getAllBookRequests()
-        this.getAllBooks()
+        const data = {
+            book: this.search ? this.search : ""
+        }
+        this.getAllBooks(data)
         // this.getAllPendingRequests
     }
 }

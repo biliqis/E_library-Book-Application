@@ -58,12 +58,12 @@
                                 </thead>
                                 <tbody>
                                     <tr
-                                    v-for="(item, index) in singleBook.requestUsers"
+                                    v-for="(item, index) in pendingRequests"
                                     :key="index"
                                     class="grey--text"
                                     >
                                         <td>
-                                            {{ item.firstName }}
+                                            {{ item.user }}
                                         </td>
                                         <td class="text-center d-flex justify-center">
                                             <v-checkbox
@@ -121,13 +121,15 @@ export default {
     },
     computed: {
         ...mapGetters({
-            'singleBook': 'transactions/singleBook'
+            'singleBook': 'transactions/singleBook',
+            'pendingRequests': 'administration/pendingRequests'
         })
     },
      methods: {
         ...mapActions({
                 'getSingleBook': 'transactions/getSingleBook',
                 'approveRequests': 'administration/approveRequests',
+                'getAllPendingRequests': 'administration/getAllPendingRequests',
         }),
         clickToApprove(val){
             console.log(val)
@@ -166,7 +168,7 @@ export default {
     },
     mounted(){
         this.bookRequestsId = this.$route.params.id
-        this.getSingleBook(this.bookRequestsId)
+        this.getAllPendingRequests(this.bookRequestsId)
     }
 }
 </script>

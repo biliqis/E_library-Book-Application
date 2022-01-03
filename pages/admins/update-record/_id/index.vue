@@ -61,12 +61,12 @@
                                 </thead>
                                 <tbody>
                                     <tr
-                                    v-for="(item, index) in singleBook.requestUsers"
+                                    v-for="(item, index) in allApprovedRequests"
                                     :key="index"
                                     class="grey--text"
                                     >
                                         <td>
-                                            {{ item.firstName }}
+                                            {{ item.user }}
                                         </td>
                                         <td class="text-center d-flex justify-center">
                                             <v-checkbox
@@ -126,7 +126,8 @@ export default {
     computed: {
             ...mapGetters({
                 'bookRequests': 'administration/bookRequests',
-                'singleBook': 'transactions/singleBook'
+                'singleBook': 'transactions/singleBook',
+                'allApprovedRequests': 'administration/allApprovedRequests',
             })
         },
     methods:{
@@ -136,6 +137,7 @@ export default {
             ...mapActions({
                 'getSingleBook': 'transactions/getSingleBook',
                 'updateRequests': 'administration/updateRequests',
+                'getAllApprovedRequests': 'administration/getAllApprovedRequests',
             }),
 
             clickToApprove(val){
@@ -173,7 +175,7 @@ export default {
     },
     mounted(){
         this.bookRequestsId = this.$route.params.id
-        this.getSingleBook(this.bookRequestsId)
+        this.getAllApprovedRequests(this.bookRequestsId)
     }
   
 }
