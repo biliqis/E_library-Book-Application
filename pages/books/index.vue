@@ -23,8 +23,6 @@
                                         depressed
                                         height="40"
                                         width="40"
-                                        :loading="loading"
-                                        :disabled="loading"
                                         color="primary"
                                         @click="searchResult"
                                         >
