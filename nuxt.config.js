@@ -49,7 +49,8 @@ export default {
   ],
 
   axios: {
-    baseURL: "https://apis-elibrary.herokuapp.com" // here set your API url
+    baseURL: process.env.API_HOST
+    // baseURL: "https://apis-elibrary.herokuapp.com" // here set your API url
   },
 
  

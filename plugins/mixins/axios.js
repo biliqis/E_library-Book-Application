@@ -12,7 +12,6 @@ export default function ({ $axios, store, app}){
                 
             }
             if (error.response.status === 400) {
-                console.log("kmk", error.response.data.message)
                 let errors = {
                     'other_error' : [error.response.data.message]
                 }
@@ -69,7 +68,6 @@ export default function ({ $axios, store, app}){
                 {
                     
                     let messageData3 = {'text': response.data.message, 'target': null, 'type': 'success', 'time': null}
-                    console.log("bfbgg", response)
                     store.dispatch('message/setMessage', messageData3)
 
                     if( response.config.method === 'post' ||  response.config.method === 'delete'){

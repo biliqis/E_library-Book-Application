@@ -8,7 +8,7 @@
                             <div class="d-flex items-center">
                                 <v-text-field
                                     v-model="search"
-                                    placeholder="Password"
+                                    placeholder="Search book"
                                     append-icon="mdi-magnify"
                                     dense
                                     outlined
@@ -25,16 +25,14 @@
                                     :loading="loading"
                                     :disabled="loading"
                                     color="primary"
-                                    @click="loader = 'loading'"
-                                    >
+                                    @click="searchResult"
+                                >
                                     <v-icon>
                                         mdi-filter
                                     </v-icon>
                                 </v-btn>
                             </div>
                         </v-col>
-                        <div>
-                        </div>
                     </v-row>
                 </div>
 

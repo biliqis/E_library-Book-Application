@@ -3,10 +3,10 @@
         <v-item-group active-class="primary">
                 <v-row>
                     <v-col  cols="12" >
-                        <div class="text-subtitle-1 text-left font-weight-normal grey--text mb-2" v-if="!books">
+                        <div class="text-subtitle-1 text-left font-weight-normal grey--text mb-2" v-if="allUsers.length < 1">
                             No user has been registered yet, please check back !
                         </div>
-                        <template>
+                        <template v-else>
                             <v-simple-table>
                                 <template v-slot:default>
                                 <thead>
@@ -49,12 +49,6 @@ export default {
   middleware: ['auth', 'isAdmin'],
   data(){
       return {
-          books: [ 
-              {title: 'Purpose driven life', availebleCopies: 10, id: '121313311'},
-              {title: 'Purpose driven life', availebleCopies: 10, id: '121313331'},
-              {title: 'Purpose driven life', availebleCopies: 10, id: '121313371'},
-              {title: 'Purpose driven life', availebleCopies: 10, id: '121313361'},
-          ]
       }
   },
   
@@ -72,16 +66,15 @@ export default {
     mounted(){
         this.getAllUsers()
         console.log(this.allUsers)
-        
     }
 }
 </script>
 <style scoped>
-a{
-    text-decoration: none !important;
-}
-.table-width{
-    width: 100% !important;
-    background: red !important;
-}
+    a{
+        text-decoration: none !important;
+    }
+    .table-width{
+        width: 100% !important;
+        background: red !important;
+    }
 </style>

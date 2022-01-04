@@ -7,7 +7,7 @@
                             <div class="d-flex items-center">
                                 <v-text-field
                                     v-model="search"
-                                    placeholder="Password"
+                                    placeholder="Search book"
                                     append-icon="mdi-magnify"
                                     dense
                                     outlined
@@ -91,6 +91,12 @@ export default {
           'allBooks': 'transactions/allBooks',
         'pendingRequests': 'administration/pendingRequests'
       }), 
+  },
+  methods: {
+      ...mapActions({
+            'getAllBooks': 'transactions/getAllBooks',
+          'getAllPendingRequests': 'administration/getAllPendingRequests'
+      }),
 
       searchResult(){
             const data = {
@@ -98,12 +104,6 @@ export default {
             }
             this.getAllBooks(data)
         }
-  },
-  methods: {
-      ...mapActions({
-            'getAllBooks': 'transactions/getAllBooks',
-          'getAllPendingRequests': 'administration/getAllPendingRequests'
-      }),
   },
   mounted(){
       const data = {

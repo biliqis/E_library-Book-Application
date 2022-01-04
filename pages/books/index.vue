@@ -90,6 +90,11 @@ export default {
         ...mapGetters({
             'allBooks': 'transactions/allBooks'
         }),
+    }, 
+    methods: {
+        ...mapActions({
+            'getAllBooks': 'transactions/getAllBooks'
+        }),
 
         searchResult(){
             const data = {
@@ -97,11 +102,6 @@ export default {
             }
             this.getAllBooks(data)
         }
-    }, 
-    methods: {
-        ...mapActions({
-            'getAllBooks': 'transactions/getAllBooks'
-        })
     },
     mounted(){
         const data = {

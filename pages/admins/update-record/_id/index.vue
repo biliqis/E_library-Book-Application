@@ -9,7 +9,7 @@
                             <div class="d-flex items-center">
                                 <v-text-field
                                     v-model="search"
-                                    placeholder="Password"
+                                    placeholder="Search user"
                                     append-icon="mdi-magnify"
                                     dense
                                     outlined

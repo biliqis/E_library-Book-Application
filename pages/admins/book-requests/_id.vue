@@ -2,14 +2,14 @@
     <main>
     <v-container>
         <v-item-group active-class="primary">
-                <div class="text-h6 text-left font-weight-medium grey--text mb-10 text-capitalize">'{{singleBook.bookTitle}}'</span></div>
+                <div class="text-h6 text-left font-weight-medium grey--text mb-10 text-capitalize">{{singleBook.bookTitle}}</span></div>
                 <div>
                     <v-row>
                         <v-col cols="12" md="4" class="pa-0">
                             <div class="d-flex items-center">
                                 <v-text-field
                                     v-model="search"
-                                    placeholder="Password"
+                                    placeholder="Search user"
                                     append-icon="mdi-magnify"
                                     dense
                                     outlined
@@ -26,7 +26,7 @@
                                     :loading="loading"
                                     :disabled="loading"
                                     color="primary"
-                                    @click="loader = 'loading'"
+                                    @click="searchResult"
                                     >
                                     <v-icon>
                                         mdi-filter
@@ -164,11 +164,19 @@ export default {
             } catch(err){
 
             }
+        },
+
+      searchResult(){
+            const data = {
+                book: this.search ? this.search : ""
+            }
+            this.getAllBooks(data)
         }
     },
     mounted(){
         this.bookRequestsId = this.$route.params.id
         this.getAllPendingRequests(this.bookRequestsId)
+        this.getSingleBook(this.bookRequestsId)
     }
 }
 </script>

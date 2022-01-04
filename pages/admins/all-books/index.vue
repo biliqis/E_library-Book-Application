@@ -9,7 +9,7 @@
                                 <v-form class="d-flex items-center">
                                     <v-text-field
                                         v-model="search"
-                                        placeholder="Password"
+                                        placeholder="Search book"
                                         append-icon="mdi-magnify"
                                         dense
                                         outlined
@@ -110,18 +110,6 @@ export default {
         return {
             search: null,
             loading: false,
-            headers: [
-                {
-                    text: 'Book Title',
-                    align: 'start',
-                    sortable: false,
-                    value: 'bookTitle',
-                },
-                { text: '', value: 'actions', sortable: false },
-                { text: 'Available Copies', value: 'availableCopies' },
-                { text: 'Borrowed Copies', value: 'borrowedCopies' },
-                { text: 'Total', value: 'noOfCopies' },
-            ],
         }
   },
 
@@ -129,13 +117,6 @@ export default {
             ...mapGetters({
              'allBooks': 'transactions/allBooks'
             }),
-
-        searchResult(){
-            const data = {
-                book: this.search ? this.search : ""
-            }
-            this.getAllBooks(data)
-        }
   },
 
   methods:{
@@ -149,6 +130,13 @@ export default {
             console.log(val)
             this.$router.push(`/admins/all-books/edit/${val._id}`)
         },
+
+        searchResult(){
+            const data = {
+                book: this.search ? this.search : ""
+            }
+            this.getAllBooks(data)
+        }
 },
 mounted(){
     const data = {
