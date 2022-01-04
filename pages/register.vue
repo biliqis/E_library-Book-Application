@@ -184,7 +184,6 @@ export default {
                 address: this.register.address,
                 role: 'user'
             }
-            console.log(data1)
             await this.userRegister(data1);
             this.show = true
             await this.$auth.loginWith("local", {
