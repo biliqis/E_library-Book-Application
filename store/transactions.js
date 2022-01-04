@@ -47,7 +47,7 @@ export const actions = {
 
     async getAllBooks({ commit }, registerData) {
         commit("SET_LOADING", true);
-        const {allBooks} = await this.$axios.$get("/api/v1/book/full-book-search?book=" + registerData );
+        const {allBooks} = await this.$axios.$get("/api/v1/book/full-book-search?book=" + registerData.book );
         commit('SET_ALL_BOOKS', allBooks);
         commit("SET_LOADING", false);
     },
