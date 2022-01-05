@@ -30,10 +30,14 @@ export const actions = {
   },
 
   async passwordResetRequest({ commit }, resetData) {
-    
+    console.log(resetData)
+  },
+
+  async passwordResetRequestToken({commit}, resetToken) {
+    console.log(resetToken)
   },
 
   async changePassword({ commit }, data) {
-    
+    console.log(data)
   }
 };

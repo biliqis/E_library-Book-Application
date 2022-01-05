@@ -18,6 +18,9 @@ const _d986a620 = () => interopDefault(import('../pages/admins/register.vue' /* 
 const _1acafb4a = () => interopDefault(import('../pages/admins/update-record/index.vue' /* webpackChunkName: "pages/admins/update-record/index" */))
 const _8d0d88ea = () => interopDefault(import('../pages/admins/users.vue' /* webpackChunkName: "pages/admins/users" */))
 const _2ce170e6 = () => interopDefault(import('../pages/admins/users.vue/index.vue' /* webpackChunkName: "pages/admins/users.vue/index" */))
+const _32df5872 = () => interopDefault(import('../pages/password/change-password.vue' /* webpackChunkName: "pages/password/change-password" */))
+const _92c84714 = () => interopDefault(import('../pages/password/email.vue' /* webpackChunkName: "pages/password/email" */))
+const _9e4cc6ae = () => interopDefault(import('../pages/password/reset.vue' /* webpackChunkName: "pages/password/reset" */))
 const _152fc720 = () => interopDefault(import('../pages/admins/all-books/add-new-book.vue' /* webpackChunkName: "pages/admins/all-books/add-new-book" */))
 const _37d52b9a = () => interopDefault(import('../pages/admins/all-books/edit/_id.vue' /* webpackChunkName: "pages/admins/all-books/edit/_id" */))
 const _043d60d6 = () => interopDefault(import('../pages/admins/book-requests/_id.vue' /* webpackChunkName: "pages/admins/book-requests/_id" */))
@@ -92,6 +95,18 @@ export const routerOptions = {
     path: "/admins/users.vue",
     component: _2ce170e6,
     name: "admins-users.vue"
+  }, {
+    path: "/password/change-password",
+    component: _32df5872,
+    name: "password-change-password"
+  }, {
+    path: "/password/email",
+    component: _92c84714,
+    name: "password-email"
+  }, {
+    path: "/password/reset",
+    component: _9e4cc6ae,
+    name: "password-reset"
   }, {
     path: "/admins/all-books/add-new-book",
     component: _152fc720,
