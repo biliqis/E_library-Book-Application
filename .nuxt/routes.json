@@ -98,6 +98,27 @@
     "_name": "_2ce170e6"
   },
   {
+    "name": "password-change-password",
+    "path": "/password/change-password",
+    "component": "/home/temidayo/Desktop/E_library/client/pages/password/change-password.vue",
+    "chunkName": "pages/password/change-password",
+    "_name": "_32df5872"
+  },
+  {
+    "name": "password-email",
+    "path": "/password/email",
+    "component": "/home/temidayo/Desktop/E_library/client/pages/password/email.vue",
+    "chunkName": "pages/password/email",
+    "_name": "_92c84714"
+  },
+  {
+    "name": "password-reset",
+    "path": "/password/reset",
+    "component": "/home/temidayo/Desktop/E_library/client/pages/password/reset.vue",
+    "chunkName": "pages/password/reset",
+    "_name": "_9e4cc6ae"
+  },
+  {
     "name": "admins-all-books-add-new-book",
     "path": "/admins/all-books/add-new-book",
     "component": "/home/temidayo/Desktop/E_library/client/pages/admins/all-books/add-new-book.vue",
