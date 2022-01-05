@@ -48,16 +48,16 @@ export default {
     '@nuxtjs/auth-next'
   ],
 
-  axios: {
-    // baseURL: process.env.API_HOST
-    baseURL: "https://apis-elibrary.herokuapp.com" // here set your API url
-  },
+  // axios: {
+  //   // baseURL: process.env.API_HOST
+  //   baseURL: "https://apis-elibrary.herokuapp.com" // here set your API url
+  // },
 
  
 
-  //  axios: {
-  //   baseURL: " http://localhost:8080/"  // here set your API url
-  // },
+   axios: {
+    baseURL: " http://localhost:8040/"  // here set your API url
+  },
 
 
 

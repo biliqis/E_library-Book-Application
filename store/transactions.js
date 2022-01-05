@@ -38,7 +38,7 @@ export const mutations = {
 export const actions = {
     async getMyBorrowedBooks({ commit }) {
         commit("SET_LOADING", true);
-        const { data } = await this.$axios.$get("/api/v1/books-borrowing/get-borrowed-books");
+        const { data } = await this.$axios.$get("/api/v1/admin-approval/books-borrowed");
         commit('SET_BORROWED_BOOKS', data)
         commit("SET_LOADING", false);
     },

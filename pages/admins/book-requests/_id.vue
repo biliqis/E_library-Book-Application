@@ -49,37 +49,27 @@
                                 <thead>
                                     <tr>
                                     <th class="text-left">
-                                        <div class="text-subtitle-1 text-left font-weight-medium grey--text mb-2">Users</div>
+                                        Users
                                     </th>
-                                    <th class="text-center">
-                                        Select
+                                    <th class="text-right">
+                                        Update User
                                     </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr
-                                    v-for="(item, index) in pendingRequests"
-                                    :key="index"
-                                    class="grey--text"
+                                    v-for="item in pendingRequests"
+                                    :key="item.name"
                                     >
-                                        <td>
-                                            {{ item.user }}
-                                        </td>
-                                        <td class="text-center d-flex justify-center">
-                                            <v-checkbox
-                                                v-model="approvals"
-                                                @click="clickToApprove(item._id)"
-                                                multiple
-                                                :value="item._id"
-                                                class="my-auto d-flex"
-                                            ></v-checkbox>
-                                        </td>
+                                    <td>{{ item.username }}</td>
+                                    <td class="text-right d-flex ml-auto">                                        
+                                        <v-checkbox v-model="selected" color="primary" class="d-flex justify-content-end ml-auto align-right" :value="item._id" :multiple="true"></v-checkbox>
+                                    </td>
                                     </tr>
                                 </tbody>
                                 </template>
                             </v-simple-table>
-                            </template>
-                    </v-col>
+                        </template></v-col>
                 </v-row>
         </v-item-group>
         </v-container>
@@ -88,7 +78,7 @@
             max-width="290"
             >
             <v-card>
-                <v-card-title class="text-h5 text-center primary--text">
+                <v-card-title class="text-h5 d-flex mx-center text-center primary--text">
                     Borrow Book
                 </v-card-title>
 
@@ -116,7 +106,8 @@ export default {
             search: null,
             bookTitle: 'Purpose driven life',
             checkbox: false,
-            approvals: null
+            approvals: null,
+            selected: []
         }
     },
     computed: {
@@ -137,7 +128,7 @@ export default {
         },
 
         async approveReq(){
-            if(!this.approvals){
+            if(this.selected.length < 1){
                 this.$notify({
                     group: 'auth',
                     text: 'You need to select at least a book to continue.',
@@ -152,9 +143,10 @@ export default {
         async confirmApproval(){
             try{
                 const data = {
-                    requestId: this.approvals
-                }
-                await this.approveRequests(this.approvals)
+                        requestIds: this.selected,
+                        bookId: this.bookRequestsId
+                    }
+                await this.approveRequests(data)
                 this.dialog = true;
                 this.$notify({
                     group: 'auth',

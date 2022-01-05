@@ -43,46 +43,36 @@
                 </div>
                 <v-row>
                     <v-col  cols="12" class="pa-0">
-                        <div class="text-subtitle-1 text-left font-weight-normal grey--text mb-2" v-if="!bookRequests">
-                            No book request yet, please check back !
+                        <div class="text-subtitle-1 d-flex justify-center mx-auto text-center mt-8 font-weight-normal grey--text mb-2" v-if="allApprovedRequests.length < 1">
+                            No pending request requests for {{singleBook.bookTitle}} awaiting return
                         </div>
-                        <template>
+                        <template v-else>
                             <v-simple-table>
                                 <template v-slot:default>
                                 <thead>
                                     <tr>
                                     <th class="text-left">
-                                        <div class="text-subtitle-1 text-left font-weight-medium grey--text mb-2">Users</div>
+                                        Users
                                     </th>
-                                    <th class="text-center">
-                                        Select
+                                    <th class="text-right">
+                                        Update User
                                     </th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody >
                                     <tr
-                                    v-for="(item, index) in allApprovedRequests"
-                                    :key="index"
-                                    class="grey--text"
-                                    >
-                                        <td>
-                                            {{ item.user }}
-                                        </td>
-                                        <td class="text-center d-flex justify-center">
-                                            <v-checkbox
-                                                v-model="approvals"
-                                                @click="clickToApprove(item._id)"
-                                                multiple
-                                                :value="item._id"
-                                                class="my-auto d-flex"
-                                            ></v-checkbox>
+                                        v-for="item in allApprovedRequests"
+                                        :key="item._id"
+                                        >
+                                        <td >{{ item.username }}</td>
+                                        <td class="text-right d-flex ml-auto my-auto" v-if="item">                                        
+                                            <v-checkbox v-model="selected" color="primary" class="d-flex justify-content-end ml-auto align-right" :value="item._id" :multiple="true"></v-checkbox>
                                         </td>
                                     </tr>
                                 </tbody>
                                 </template>
                             </v-simple-table>
-                            </template>
-                    </v-col>
+                        </template></v-col>
                 </v-row>
         </v-item-group>
         </v-container>
@@ -120,7 +110,8 @@ export default {
         search: null,
         bookTitle: 'Purpose driven life',
         checkbox: false,
-        approvals: null
+        approvals: null,
+        selected: [],
       }
     },
     computed: {
@@ -146,7 +137,7 @@ export default {
             },
 
             async approveReq(){
-                if(!this.approvals){
+                if(this.selected.length < 1){
                     this.$notify({
                         group: 'auth',
                         text: 'You need to select at least a book to continue.',
@@ -161,17 +152,16 @@ export default {
 
             async confirmApproval(){
                 try{
-                    await this.updateRequests(this.approvals)
+                    const data = {
+                        requestIds: this.selected,
+                        bookId: this.bookRequestsId
+                    }
+                    await this.updateRequests(data)
                     this.dialog = true;
-                    this.$notify({
-                        group: 'auth',
-                        text: 'Book has been updated',
-                        duration: 2000,
-                    });
                 } catch(err){
 
                 }
-            }
+            },
     },
     mounted(){
         this.bookRequestsId = this.$route.params.id

@@ -23,8 +23,6 @@
                                         depressed
                                         height="40"
                                         width="40"
-                                        :loading="loading"
-                                        :disabled="loading"
                                         color="primary"
                                         @click="searchResult"
                                         >
@@ -42,24 +40,41 @@
                 <v-row>
                     <v-col  cols="12" >
                         <template>
-                             <v-data-table
-                                :headers="headers"
-                                :items="myApprovedBooks"
-                                :items-per-page="5"
-                                class="elevation-0"
-                                >
-                                
-                                    <template v-slot:item.actions="{ item }">
-                                        <v-icon
-                                            small
-                                            class="mr-2"
-                                            @click="editItem(item)"
+                            <v-simple-table>
+                                <template v-slot:default>
+                                    <thead>
+                                        <tr>
+                                        <th class="text-left">
+                                            <div class="text-subtitle-1 text-left font-weight-medium grey--text mb-2">Book  <span class="primary--text">Title</span></div>
+                                        </th>
+                                        <th class="text-center">
+                                        Author
+                                        </th>
+                                        <th class="text-center">
+                                        My request ID
+                                        </th>
+                                        <th class="text-center">
+                                        Return Date
+                                        </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr
+                                            v-for="item in borrowedBooks"
+                                            :key="item.id"
+                                            class="grey--text"
                                         >
-                                            mdi-pencil
-                                        </v-icon>
-                                        </template>
-                                </v-data-table>
-                            </template>
+                                            <td>
+                                                {{ item.appliedBooks.bookTitle }}
+                                            </td>
+                                            <td class="text-center">{{ item.appliedBooks.authorName }}</td>
+                                            <td class="text-center">{{ item.appliedBooks._id }}</td>
+                                            <td class="text-right">{{ item.borrowDate }}</td>
+                                        </tr>
+                                    </tbody>
+                                </template>
+                            </v-simple-table>
+                        </template>
                     </v-col>
                 </v-row>
         </v-item-group>
@@ -92,7 +107,7 @@ export default {
     },
     computed: {
         ...mapGetters({
-            'myApprovedBooks': 'transactions/myApprovedBooks'
+            'borrowedBooks': 'transactions/borrowedBooks'
         }),
         books: function(){
             if(this.search) {
@@ -103,7 +118,7 @@ export default {
     },
     methods: {
         ...mapActions({
-            'getMyApprovedBooks': 'transactions/getMyApprovedBooks',
+            'getMyBorrowedBooks': 'transactions/getMyBorrowedBooks',
             'getAllBooksSearch': 'transactions/getAllBooksSearch',
         }),
         editItem(val){
@@ -114,7 +129,7 @@ export default {
         }
     },
     mounted(){
-        this.getMyApprovedBooks(this.search)
+        this.getMyBorrowedBooks(this.search)
     }
 }
 </script>

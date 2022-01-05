@@ -52,15 +52,15 @@ export const actions = {
 
   
 
-  async approveRequests({ commit }, bookData) {
+  async approveRequests({ commit }, requestData) {
     commit("SET_LOADING", true);
-    await this.$axios.$patch("/api/v1/admin-approval/approve-book-borrowing/" + bookData);
+    await this.$axios.$patch("/api/v1/admin-approval/approve-book-borrowing/"+ requestData.requestIds + "/" + requestData.bookId);
     commit("SET_LOADING", false);
   },
 
-  async updateRequests({ commit }, bookData) {
+  async updateRequests({ commit }, requestData) {
     commit("SET_LOADING", true);
-    await this.$axios.$patch("/api/v1/admin-approval/replace-borrowed-books/"+ bookData);
+    await this.$axios.$patch("/api/v1/admin-approval/updates-record/"+ requestData.requestIds + "/" + requestData.bookId);
     commit("SET_LOADING", false);
   },
 

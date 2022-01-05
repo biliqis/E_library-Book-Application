@@ -183,15 +183,8 @@ export default {
 
         formData.append("pricePerBook", this.price);
         formData.append("bookCover", blob);
-        console.log(formData);
         await this.createNewBook(formData);
-        // console.log(formData)
-        // this.$router.push("/admins/all-books/");
-        await this.$notify({
-          group: "auth",
-          text: `${this.title} successfully added`,
-          duration: 1500,
-        });
+        this.$router.push("/admins/all-books/");
       } catch (err) {}
     },
   },

@@ -30,18 +30,24 @@ export default {
     computed: {
         ...mapGetters({
             'borrowedBooks': 'transactions/borrowedBooks'
-        })
-    }, 
+        }),
+        books: function(){
+            if(this.search) {
+                return this.searchResult()
+            }
+            return this.allBooks
+        }
+    },
     methods: {
         ...mapActions({
-            'getMyBorrowedBooks': 'transactions/getMyBorrowedBooks'
-        })
+            'getMyApprovedBooks': 'transactions/getMyApprovedBooks',
+        }),
+        searchResult(){
+
+        }
     },
     mounted(){
-         if(this.user.role ==="admin"){
-            this.$router.push("/admins/dashboard")
-}
-        this.getMyBorrowedBooks()
+        this.getMyApprovedBooks(this.search)
     }
 }
 </script>
