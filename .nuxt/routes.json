@@ -2,162 +2,162 @@
   {
     "name": "books",
     "path": "/books",
-    "component": "/home/temidayo/Desktop/E_library/client/pages/books/index.vue",
+    "component": "/home/temidayo/Desktop/books-Application/E_library-Book-Application/pages/books/index.vue",
     "chunkName": "pages/books/index",
-    "_name": "_85595362"
+    "_name": "_5dae6e20"
   },
   {
     "name": "dashboard",
     "path": "/dashboard",
-    "component": "/home/temidayo/Desktop/E_library/client/pages/dashboard.vue",
+    "component": "/home/temidayo/Desktop/books-Application/E_library-Book-Application/pages/dashboard.vue",
     "chunkName": "pages/dashboard",
-    "_name": "_e003f294"
+    "_name": "_c3bca4d2"
   },
   {
     "name": "inspire",
     "path": "/inspire",
-    "component": "/home/temidayo/Desktop/E_library/client/pages/inspire.vue",
+    "component": "/home/temidayo/Desktop/books-Application/E_library-Book-Application/pages/inspire.vue",
     "chunkName": "pages/inspire",
-    "_name": "_4209567c"
+    "_name": "_44fb419d"
   },
   {
     "name": "login",
     "path": "/login",
-    "component": "/home/temidayo/Desktop/E_library/client/pages/login.vue",
+    "component": "/home/temidayo/Desktop/books-Application/E_library-Book-Application/pages/login.vue",
     "chunkName": "pages/login",
-    "_name": "_292823ea"
+    "_name": "_c31fa528"
   },
   {
     "name": "profile",
     "path": "/profile",
-    "component": "/home/temidayo/Desktop/E_library/client/pages/profile/index.vue",
+    "component": "/home/temidayo/Desktop/books-Application/E_library-Book-Application/pages/profile/index.vue",
     "chunkName": "pages/profile/index",
-    "_name": "_352d300e"
+    "_name": "_ad1f0322"
   },
   {
     "name": "register",
     "path": "/register",
-    "component": "/home/temidayo/Desktop/E_library/client/pages/register.vue",
+    "component": "/home/temidayo/Desktop/books-Application/E_library-Book-Application/pages/register.vue",
     "chunkName": "pages/register",
-    "_name": "_033b6af1"
+    "_name": "_5e86e3f0"
   },
   {
     "name": "shelf",
     "path": "/shelf",
-    "component": "/home/temidayo/Desktop/E_library/client/pages/shelf/index.vue",
+    "component": "/home/temidayo/Desktop/books-Application/E_library-Book-Application/pages/shelf/index.vue",
     "chunkName": "pages/shelf/index",
-    "_name": "_a2699c62"
+    "_name": "_7abeb720"
   },
   {
     "name": "admins-all-books",
     "path": "/admins/all-books",
-    "component": "/home/temidayo/Desktop/E_library/client/pages/admins/all-books/index.vue",
+    "component": "/home/temidayo/Desktop/books-Application/E_library-Book-Application/pages/admins/all-books/index.vue",
     "chunkName": "pages/admins/all-books/index",
-    "_name": "_50b9ab78"
+    "_name": "_6f0b7903"
   },
   {
     "name": "admins-book-requests",
     "path": "/admins/book-requests",
-    "component": "/home/temidayo/Desktop/E_library/client/pages/admins/book-requests/index.vue",
+    "component": "/home/temidayo/Desktop/books-Application/E_library-Book-Application/pages/admins/book-requests/index.vue",
     "chunkName": "pages/admins/book-requests/index",
-    "_name": "_1a517aee"
+    "_name": "_1366522d"
   },
   {
     "name": "admins-dashboard",
     "path": "/admins/dashboard",
-    "component": "/home/temidayo/Desktop/E_library/client/pages/admins/dashboard.vue",
+    "component": "/home/temidayo/Desktop/books-Application/E_library-Book-Application/pages/admins/dashboard.vue",
     "chunkName": "pages/admins/dashboard",
-    "_name": "_00250497"
+    "_name": "_b6b9e2d4"
   },
   {
     "name": "admins-register",
     "path": "/admins/register",
-    "component": "/home/temidayo/Desktop/E_library/client/pages/admins/register.vue",
+    "component": "/home/temidayo/Desktop/books-Application/E_library-Book-Application/pages/admins/register.vue",
     "chunkName": "pages/admins/register",
-    "_name": "_d986a620"
+    "_name": "_03e5e711"
   },
   {
     "name": "admins-update-record",
     "path": "/admins/update-record",
-    "component": "/home/temidayo/Desktop/E_library/client/pages/admins/update-record/index.vue",
+    "component": "/home/temidayo/Desktop/books-Application/E_library-Book-Application/pages/admins/update-record/index.vue",
     "chunkName": "pages/admins/update-record/index",
-    "_name": "_1acafb4a"
+    "_name": "_28a14ccc"
   },
   {
     "name": "admins-users",
     "path": "/admins/users",
-    "component": "/home/temidayo/Desktop/E_library/client/pages/admins/users.vue",
+    "component": "/home/temidayo/Desktop/books-Application/E_library-Book-Application/pages/admins/users.vue",
     "chunkName": "pages/admins/users",
-    "_name": "_8d0d88ea"
+    "_name": "_20521d0a"
   },
   {
     "name": "admins-users.vue",
     "path": "/admins/users.vue",
-    "component": "/home/temidayo/Desktop/E_library/client/pages/admins/users.vue/index.vue",
+    "component": "/home/temidayo/Desktop/books-Application/E_library-Book-Application/pages/admins/users.vue/index.vue",
     "chunkName": "pages/admins/users.vue/index",
-    "_name": "_2ce170e6"
+    "_name": "_776c80b6"
   },
   {
     "name": "password-change-password",
     "path": "/password/change-password",
-    "component": "/home/temidayo/Desktop/E_library/client/pages/password/change-password.vue",
+    "component": "/home/temidayo/Desktop/books-Application/E_library-Book-Application/pages/password/change-password.vue",
     "chunkName": "pages/password/change-password",
-    "_name": "_32df5872"
+    "_name": "_dd22191e"
   },
   {
     "name": "password-email",
     "path": "/password/email",
-    "component": "/home/temidayo/Desktop/E_library/client/pages/password/email.vue",
+    "component": "/home/temidayo/Desktop/books-Application/E_library-Book-Application/pages/password/email.vue",
     "chunkName": "pages/password/email",
-    "_name": "_92c84714"
+    "_name": "_6a7b4b96"
   },
   {
     "name": "password-reset",
     "path": "/password/reset",
-    "component": "/home/temidayo/Desktop/E_library/client/pages/password/reset.vue",
+    "component": "/home/temidayo/Desktop/books-Application/E_library-Book-Application/pages/password/reset.vue",
     "chunkName": "pages/password/reset",
-    "_name": "_9e4cc6ae"
+    "_name": "_75ffcb30"
   },
   {
     "name": "admins-all-books-add-new-book",
     "path": "/admins/all-books/add-new-book",
-    "component": "/home/temidayo/Desktop/E_library/client/pages/admins/all-books/add-new-book.vue",
+    "component": "/home/temidayo/Desktop/books-Application/E_library-Book-Application/pages/admins/all-books/add-new-book.vue",
     "chunkName": "pages/admins/all-books/add-new-book",
-    "_name": "_152fc720"
+    "_name": "_151798fe"
   },
   {
     "name": "admins-all-books-edit-id",
     "path": "/admins/all-books/edit/:id",
-    "component": "/home/temidayo/Desktop/E_library/client/pages/admins/all-books/edit/_id.vue",
+    "component": "/home/temidayo/Desktop/books-Application/E_library-Book-Application/pages/admins/all-books/edit/_id.vue",
     "chunkName": "pages/admins/all-books/edit/_id",
-    "_name": "_37d52b9a"
+    "_name": "_57792f14"
   },
   {
     "name": "admins-book-requests-id",
     "path": "/admins/book-requests/:id?",
-    "component": "/home/temidayo/Desktop/E_library/client/pages/admins/book-requests/_id.vue",
+    "component": "/home/temidayo/Desktop/books-Application/E_library-Book-Application/pages/admins/book-requests/_id.vue",
     "chunkName": "pages/admins/book-requests/_id",
-    "_name": "_043d60d6"
+    "_name": "_62ccfbd5"
   },
   {
     "name": "admins-update-record-id",
     "path": "/admins/update-record/:id",
-    "component": "/home/temidayo/Desktop/E_library/client/pages/admins/update-record/_id/index.vue",
+    "component": "/home/temidayo/Desktop/books-Application/E_library-Book-Application/pages/admins/update-record/_id/index.vue",
     "chunkName": "pages/admins/update-record/_id/index",
-    "_name": "_8d361074"
+    "_name": "_3ca3d0f6"
   },
   {
     "name": "books-id",
     "path": "/books/:id",
-    "component": "/home/temidayo/Desktop/E_library/client/pages/books/_id/index.vue",
+    "component": "/home/temidayo/Desktop/books-Application/E_library-Book-Application/pages/books/_id/index.vue",
     "chunkName": "pages/books/_id/index",
-    "_name": "_12eab1ba"
+    "_name": "_f8d8284a"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/home/temidayo/Desktop/E_library/client/pages/index.vue",
+    "component": "/home/temidayo/Desktop/books-Application/E_library-Book-Application/pages/index.vue",
     "chunkName": "pages/index",
-    "_name": "_21c44af4"
+    "_name": "_566eeb56"
   }
 ]
