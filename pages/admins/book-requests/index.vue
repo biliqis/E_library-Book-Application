@@ -64,7 +64,7 @@
                                         <td>
                                             <nuxt-link :to="'/admins/book-requests/' + item._id" class="grey--text">{{ item.bookTitle }}</nuxt-link>
                                         </td>
-                                        <td class="text-center">{{ item.requestUsers.length }}</td>
+                                        <td class="text-center">{{ item.borrowedCopies - item.numberOfRequest }}</td>
                                     </tr>
                                 </tbody>
                                 </template>
