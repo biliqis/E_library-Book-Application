@@ -40,14 +40,14 @@ export default {
     },
     methods: {
         ...mapActions({
-            'getMyApprovedBooks': 'transactions/getMyApprovedBooks',
+            'getMyBorrowedBooks': 'transactions/getMyBorrowedBooks',
         }),
         searchResult(){
 
         }
     },
     mounted(){
-        this.getMyApprovedBooks(this.search)
+        this.getMyBorrowedBooks(this.search)
     }
 }
 </script>
