@@ -86,7 +86,7 @@
                 </v-card-title>
 
                 <v-card-text class="text-center">
-                    Are you sure you want to approve this book
+                    Are you sure you want to Update this book
                 </v-card-text>
 
                 <v-card-actions>
