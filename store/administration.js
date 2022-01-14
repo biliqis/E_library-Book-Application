@@ -64,10 +64,9 @@ export const actions = {
     commit("SET_LOADING", false);
   },
 
- async getAllUsers({ commit },) {
+ async getAllUsers({ commit }, userSearch) {
     commit("SET_LOADING", true);
-    const {allBooks} = await this.$axios.$get("/api/v1/book/full-book-search?book=" + registerData.book );
-    const {getUser}   = await this.$axios.$get("/api/v1/get-all-user?user = " + registerData.searchUser)
+    const {getUser}   = await this.$axios.$get("/api/v1/get-all-user?user=" + userSearch)
     commit('SET_ALL_USERS', getUser)
     commit("SET_LOADING", false)
   },

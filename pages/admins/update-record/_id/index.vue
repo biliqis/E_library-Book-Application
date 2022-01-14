@@ -23,10 +23,8 @@
                                     depressed
                                     height="40"
                                     width="40"
-                                    :loading="loading"
-                                    :disabled="loading"
                                     color="primary"
-                                    @click="loader = 'loading'"
+                                    @click="searchResult"
                                     >
                                     <v-icon>
                                         mdi-filter
@@ -162,10 +160,15 @@ export default {
 
                 }
             },
+        searchResult(e) {
+
+        }
     },
     mounted(){
         this.bookRequestsId = this.$route.params.id
         this.getAllApprovedRequests(this.bookRequestsId)
+
+        
     }
   
 }

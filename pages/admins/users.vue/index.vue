@@ -1,6 +1,39 @@
 <template>
     <main>
         <v-item-group active-class="primary">
+            <div>
+                    <v-row>
+                        <v-col cols="12" md="4" class="pa-0">
+                            <div class="d-flex items-center">
+                                <v-text-field
+                                    v-model="search"
+                                    placeholder="Search user"
+                                    append-icon="mdi-magnify"
+                                    dense
+                                    outlined
+                                    block
+                                    height="40"
+                                    :required="true"
+                                    class="ma-0 p-0 mb-3"
+                                />
+                                <v-btn
+                                    class="ml-1"
+                                    depressed
+                                    height="40"
+                                    width="40"
+                                    color="primary"
+                                    @click="searchResult"
+                                    >
+                                    <v-icon>
+                                        mdi-filter
+                                    </v-icon>
+                                </v-btn>
+                            </div>
+                        </v-col>
+                        <div>
+                        </div>
+                    </v-row>
+                </div>
                 <v-row>
                     <v-col  cols="12" >
                         <div class="text-subtitle-1 text-left font-weight-normal grey--text mb-2" v-if="allUsers.length < 1">
@@ -45,27 +78,32 @@
 
 import { mapGetters, mapActions } from "vuex"
 export default {
-  components: {},
-  middleware: ['auth', 'isAdmin'],
-  data(){
-      return {
-      }
-  },
-  
-  computed: {
+    components: {},
+    middleware: ['auth', 'isAdmin'],
+    data(){
+        return {
+            search: null
+        }
+    },
+    computed: {
         ...mapGetters({
             'allUsers': 'administration/allUsers',
-            
         })
     },
     methods: {
         ...mapActions({
             'getAllUsers': 'administration/getAllUsers',
-        })
+        }),
+        searchResult(e) {
+            
+            this.getAllUsers(this.search ? this.search : "");
+        }
     },
     mounted(){
-        this.getAllUsers()
-        console.log(this.allUsers)
+        const registerData = {
+            userSearch: this.search ? this.search : ""
+        };
+        this.getAllUsers(registerData);
     }
 }
 </script>
